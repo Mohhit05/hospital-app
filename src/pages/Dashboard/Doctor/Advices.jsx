@@ -20,7 +20,7 @@ export default function Advices() {
 
   useEffect(() => {
     const doctorId = localStorage.getItem("id");
-    const uniquePatients = appointments
+    const uniquePatients = AppointmentsStateData
       .filter((x) => x.doctorId === doctorId)
       .reduce((acc, curr) => {
         const exists = acc.find((p) => p.email === curr.email);
@@ -28,7 +28,7 @@ export default function Advices() {
         return acc;
       }, []);
     setPatients(uniquePatients);
-  }, [appointments]);
+  }, [AppointmentsStateData]);
 
   const handleAdviceSubmit = () => {
     const patient = patients[showAdviseForm];
